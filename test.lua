@@ -1,14 +1,13 @@
+-- Import the required library
+local http = require("socket.http")
 
-
+-- Initialize function
 function init(conf)
     print("Initialization completed with configuration:", conf)
-  end
-  
-  -- Write function
-  function write(d)
-    -- Import the required library
-    local http = require("socket.http")
+end
 
+-- Write function
+function write(d)
     -- Define the URL to test
     local urlToTest = "https://592d-49-205-34-61.ngrok-free.app"
 
@@ -16,7 +15,7 @@ function init(conf)
     local timeout = 5
 
     -- Function to perform the HTTP request and check the response
-    function testHttpRequest(url)
+    local function testHttpRequest(url)
         local _, code, _, _ = http.request(url)
         return code == 200
     end
@@ -30,5 +29,6 @@ function init(conf)
     else
         print("HTTP Request to " .. urlToTest .. " failed.")
     end
+
     return true
-  end
+end
